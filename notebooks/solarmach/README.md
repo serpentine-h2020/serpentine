@@ -3,8 +3,8 @@
 2. Open your terminal/command line/Anaconda prompt and run the following:
 
 ``` bash
-$ conda create --name test_solarmach python=3.9
-$ conda activate test_solarmach
+$ conda create --name serpentine python=3.9
+$ conda activate serpentine
 $ pip install -r requirements.txt
 ```
 3. [Download this repository](https://github.com/serpentine-h2020/serpentine/archive/refs/heads/main.zip) and extract to a folder of your choice.
