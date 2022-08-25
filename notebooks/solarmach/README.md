@@ -14,3 +14,4 @@ $ pip install -r requirements.txt
 1. Open your terminal/command line/Anaconda prompt.
 2. In the terminal, navigate to the folder containing the file `solarmach.ipynb` in the downloaded repository.
 3. Run `jupyter notebook solarmach.ipynb`
+4. Your standard web-browser should now open the Jupyter Notebook.
