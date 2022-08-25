@@ -1,0 +1,6 @@
+jupyter
+solarmach
+cmasher==1.6.3
+pfsspy
+zeep==4.1.0
+drms==0.6.2
