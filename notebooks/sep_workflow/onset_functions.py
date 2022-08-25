@@ -2,7 +2,6 @@
 import os
 import datetime
 import warnings
-# from turtle import speed
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import matplotlib.colors as cl
@@ -15,12 +14,12 @@ from matplotlib.dates import DateFormatter
 from matplotlib.ticker import ScalarFormatter
 from matplotlib.offsetbox import AnchoredText
 from pandas.tseries.frequencies import to_offset
-from psp_isois_loader import calc_av_en_flux_PSP_EPIHI, calc_av_en_flux_PSP_EPILO, psp_isois_load
+# from psp_isois_loader import calc_av_en_flux_PSP_EPIHI, calc_av_en_flux_PSP_EPILO, psp_isois_load
 from soho_loader import calc_av_en_flux_ERNE, soho_load
 from solo_epd_loader import epd_load
 from stereo_loader import calc_av_en_flux_HET as calc_av_en_flux_ST_HET
 from stereo_loader import calc_av_en_flux_SEPT, stereo_load
-from wind_3dp_loader import wind3dp_load
+# from wind_3dp_loader import wind3dp_load
 
 from IPython.core.display import display
 
