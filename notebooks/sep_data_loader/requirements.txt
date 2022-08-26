@@ -1,3 +1,0 @@
-jupyter
-matplotlib
-solo_epd_loader>=0.1.10
