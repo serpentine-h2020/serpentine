@@ -1,6 +1,6 @@
 # Installation 
 1. Make sure you have a recent version of [Anaconda](https://www.anaconda.com/products/distribution) installed.
-2. [Download this file](https://github.com/serpentine-h2020/serpentine/archive/refs/heads/main.zip) and extract to a folder of your choice.
+2. [Download this file](https://github.com/serpentine-h2020/serpentine/archive/refs/heads/main.zip) and extract to a folder of your choice (or clone the repository https://github.com/serpentine-h2020/serpentine if you know how to use `git`).
 3. Open your terminal/command line/Anaconda prompt, navigate to the downloaded (extracted) folder `notebooks/solarmach` that contains the file `requirements.txt`, and run the following:
 
 ``` bash
