@@ -4,8 +4,8 @@
 3. Open your terminal/command line/Anaconda prompt, navigate to the downloaded (extracted) folder `notebooks/solarmach` that contains the file `requirements.txt`, and run the following:
 
 ``` bash
-$ conda create --name serpentine python=3.9
-$ conda activate serpentine
+$ conda create --name solarmach python=3.9
+$ conda activate solarmach
 $ pip install -r requirements.txt
 ```
 
@@ -13,6 +13,6 @@ $ pip install -r requirements.txt
 # Run 
 1. Open your terminal/command line/Anaconda prompt.
 2. In the terminal, navigate to the downloaded (extracted) folder `notebooks/solarmach` that contains the file `solarmach.ipynb`
-3. Make sure the corresponding conda environment is activated by running `conda activate serpentine` in the terminal.
+3. Make sure the corresponding conda environment is activated by running `conda activate solarmach` in the terminal.
 4. Run `jupyter notebook solarmach.ipynb`
 5. Your standard web-browser should now open the Jupyter Notebook.
