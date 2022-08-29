@@ -1,7 +1,9 @@
 astropy>=4.3.1
 astroquery
+git+https://github.com/jgieseler/psp-isois-loader
 git+https://github.com/jgieseler/soho-loader
 git+https://github.com/jgieseler/stereo-loader
+git+https://github.com/jgieseler/wind-3dp-loader
 ipympl
 ipywidgets
 jupyter
