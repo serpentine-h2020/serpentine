@@ -13,5 +13,6 @@ $ pip install -r requirements.txt
 # Run 
 1. Open your terminal/command line/Anaconda prompt.
 2. In the terminal, navigate to the downloaded (extracted) folder `notebooks/sep_analysis_tools` that contains some `.ipynb` files.
-3. Run `jupyter notebook`
-4. Your standard web-browser should now open the Jupyter interface, where you can double click on the corresponding `.ipynb` files to launch them.
+3. Make sure the corresponding conda environment is activated by running `conda activate serpentine` in the terminal.
+4. Run `jupyter notebook`
+5. Your standard web-browser should now open the Jupyter interface, where you can double click on the corresponding `.ipynb` files to launch them.
