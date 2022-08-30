@@ -9,6 +9,7 @@ $ conda activate solarmach
 $ pip install -r requirements.txt
 ```
 
+Note that for running the PFSS functionality of the software, a registered user account is needed for obtaining HMI maps through JSOC! For this, please register your email at http://jsoc.stanford.edu/ajax/register_email.html
 
 # Run 
 1. Open your terminal/command line/Anaconda prompt.
