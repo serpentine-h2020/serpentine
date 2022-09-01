@@ -1,6 +1,12 @@
 # SERPENTINE
 This repository contains the Python tools and software developed by the [solar energetic particle analysis platform for the inner heliosphere (SERPENTINE)](https://serpentine-h2020.eu/) project for the downloading of data and the performing of analysis and visualisation.
 
+## Contents
+
+Jupyter Notebooks:
+- [Multi-Spacecraft Constellation Plotter Solar-MACH](https://github.com/serpentine-h2020/serpentine/tree/main/notebooks/solarmach)
+- [Solar Energetic Particle Analysis Tools](https://github.com/serpentine-h2020/serpentine/tree/main/notebooks/sep_analysis_tools)
+
 ## Other SERPENTINE Software
 
 General:
