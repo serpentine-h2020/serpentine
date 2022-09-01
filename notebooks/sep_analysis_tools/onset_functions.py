@@ -1412,7 +1412,7 @@ class Event:
         # y-axis settings
         ax.set_yscale('log')
         ax.set_ylim(np.nanmin(y_arr), np.nanmax(y_arr))
-        ax.set_yticks([int(yval) for yval in y_arr])
+        ax.set_yticks([yval for yval in y_arr])
         ax.yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
 
         # gets rid of minor ticks and labels
@@ -1422,7 +1422,10 @@ class Event:
         ax.set_ylabel(f"Energy [{y_unit}]")
 
         # Title
-        plt.title(f"{spacecraft.upper()} {instrument.upper()} {s_identifier}, {date_of_event}")
+        if view is not None:
+            plt.title(f"{spacecraft.upper()} {instrument.upper()} ({view}) {s_identifier}, {date_of_event}")
+        else:
+            plt.title(f"{spacecraft.upper()} {instrument.upper()} {s_identifier}, {date_of_event}")
 
         # saving of the figure
         if save:
@@ -1610,7 +1613,7 @@ class Event:
             plotted_natural.append(p1[0])
             plotted_norm.append(p2[0])
 
-        plt.legend(loc='upper center', bbox_to_anchor=(1.0, 1.1), fancybox=True, shadow=False, ncol=1, fontsize=9)
+        plt.legend(loc=1, bbox_to_anchor=(1.0, 0.25), fancybox=True, shadow=False, ncol=1, fontsize=9)
 
         # widget objects, slider and button
         style = {'description_width': 'initial'}
