@@ -5,7 +5,7 @@
     $ conda create --name serpentine python=3.9
     $ conda activate serpentine
     ```
-3. Check that you have [git](https://github.com/git-guides/install-git) installed. To test this, try to run the `git` command in your open terminal from step 2. If the command is not found, run the following to install it:
+3. Check that you have `git` installed. To test this, try to run the `git` command in your open terminal from step 2. If the command is not found, run the following to install it:
     ``` bash
     $ conda install git
     ```
