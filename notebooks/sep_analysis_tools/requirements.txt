@@ -1,9 +1,5 @@
 astropy>=4.3.1
 astroquery
-git+https://github.com/jgieseler/psp-isois-loader
-git+https://github.com/jgieseler/soho-loader
-git+https://github.com/jgieseler/stereo-loader
-git+https://github.com/jgieseler/wind-3dp-loader
 ipympl
 ipywidgets
 jupyter
@@ -11,5 +7,6 @@ matplotlib>=3.4.3
 matplotlib-inline==0.1.3
 numpy>=1.20.3
 pandas>=1.3.4
+seppy
 solo_epd_loader>=0.1.10
 sunpy>=4.0
