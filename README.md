@@ -1,4 +1,6 @@
 # SERPENTINE
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7104866.svg)](https://doi.org/10.5281/zenodo.7104866)
+
 This repository contains the Python tools and software developed by the [solar energetic particle analysis platform for the inner heliosphere (SERPENTINE)](https://serpentine-h2020.eu/) project for the downloading of data and the performing of analysis and visualisation.
 
 ## Contents
