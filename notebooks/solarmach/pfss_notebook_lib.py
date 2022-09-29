@@ -869,9 +869,9 @@ def plot3d(field_lines, names, color_code='polarity'):
 
     axarr.set_box_aspect((1, 1, 1))
 
-    axarr.set_xlabel(r"x / $R_{\odot}$")
-    axarr.set_ylabel(r"y / $R_{\odot}$")
-    axarr.set_zlabel(r"z / $R_{\odot}$")
+    axarr.set_xlabel(r"x / $R_{\odot}$", labelpad=20)
+    axarr.set_ylabel(r"y / $R_{\odot}$", labelpad=20)
+    axarr.set_zlabel(r"z / $R_{\odot}$", labelpad=20)
 
     # Draw the Sun
     u, v = np.mgrid[0:2*np.pi:20j, 0:np.pi:10j]
