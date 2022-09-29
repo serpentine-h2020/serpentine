@@ -1,5 +1,8 @@
 """
 A library to run the interactive user interface in SEP event onset determination notebooks.
+
+@ Author: Christian Palmroos <chospa@utu.fi>
+@Last updated: 2022-09-26
 """
 
 
@@ -45,6 +48,13 @@ species_dict = {
     ("SOHO", "EPHIN") : ['electrons']
 }
 
+radio_dict = {
+    "STEREO-A" : "ahead",
+    "STEREO-B" : "behind",
+    "WIND (Coming soon!)" : "wind"
+}
+
+# Drop-downs for dynamic particle spectrum:
 spacecraft_drop = widgets.Dropdown(
                                 options = list_of_sc,
                                 description = "Spacecraft:",
@@ -70,6 +80,21 @@ species_drop = widgets.Dropdown(
                                 )
 
 
+# A button to enable radio spectrum
+radio_button = widgets.Checkbox(
+                                value=False,
+                                description='Radio Spectrum',
+                                disabled=False,
+                                indent=False
+                                )
+
+# The drop-drown for radio options
+radio_drop = widgets.Dropdown(
+                                options = radio_dict.keys(),
+                                description = "Spacecraft:",
+                                disabled = True,
+                              )
+
 # this function updates the options in sensor_drop menu
 def update_sensor_options(val):
     sensor_drop.options = sensor_dict[spacecraft_drop.value]
@@ -91,6 +116,14 @@ def update_species_options(val):
         species_drop.options = species_dict[(spacecraft_drop.value, sensor_drop.value)]
     except KeyError:
         pass
+
+
+def update_radio_options(val):
+    radio_drop.disabled = not radio_button.value
+    if radio_drop.disabled:
+        radio_drop.value = None
+    else:
+        radio_drop.value = radio_drop.options[0]
 
 
 def confirm_input(event_date : int, data_path : str, plot_path : str):
@@ -145,3 +178,6 @@ sensor_drop.observe(update_view_options)
 spacecraft_drop.observe(update_species_options)
 sensor_drop.observe(update_species_options)
 
+# also observe the radio menu
+radio_button.observe(update_radio_options)
+# radio_drop.observe(update_radio_options) 
