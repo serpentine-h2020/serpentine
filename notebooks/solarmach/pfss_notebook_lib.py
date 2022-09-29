@@ -5,7 +5,7 @@ for seeking the footpoints of IMF field lines connecting back to the photosphere
 @Author: Christian Palmroos
          <chospa@utu.fi>
 
-Last updated: 2022-08-25
+Last updated: 2022-09-28
 '''
 
 # imports:
@@ -869,6 +869,10 @@ def plot3d(field_lines, names, color_code='polarity'):
 
     axarr.set_box_aspect((1, 1, 1))
 
+    axarr.set_xlabel(r"x / $R_{\odot}$")
+    axarr.set_ylabel(r"y / $R_{\odot}$")
+    axarr.set_zlabel(r"z / $R_{\odot}$")
+
     # Draw the Sun
     u, v = np.mgrid[0:2*np.pi:20j, 0:np.pi:10j]
     x = np.cos(u)*np.sin(v)
@@ -909,6 +913,9 @@ def draw_fieldlines(field_lines, rss=2.5, frame='yz', color_code='polarity', nam
 
     fig, ax = plt.subplots(figsize=[10, 10])
     ax.set_aspect('equal')
+
+    ax.set_xlabel(frame[0]+r" / $R_{\odot}$")
+    ax.set_ylabel(frame[1]+r" / $R_{\odot}$")
 
     # set color coding to field lines
     if color_code=='object':
