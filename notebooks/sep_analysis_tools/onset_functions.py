@@ -23,11 +23,17 @@ from seppy.loader.wind import wind3dp_load
 
 from IPython.core.display import display
 
+# This is to get rid of this specific warning:
+# /home/chospa/Documents/Github/serpentine/notebooks/sep_analysis_tools/read_swaves.py:96: UserWarning: The input coordinates to pcolormesh are interpreted as 
+# cell centers, but are not monotonically increasing or decreasing. This may lead to incorrectly calculated cell edges, in which 
+# case, please supply explicit cell edges to pcolormesh. 
+# colormesh = ax.pcolormesh( time_arr, freq[::-1], data_arr[::-1], vmin = 0, vmax = 0.5*np.max(data_arr), cmap = 'inferno' )
+warnings.filterwarnings("ignore", category=UserWarning)
 
 class Event:
 
     def __init__(self, start_date, end_date, spacecraft, sensor,
-                 species, data_level, data_path, threshold=None):
+                 species, data_level, data_path, download_radio=False, threshold=None):
 
         if spacecraft == "Solar Orbiter":
             spacecraft = "solo"
@@ -54,7 +60,9 @@ class Event:
         self.threshold = threshold
         self.viewing = None
 
-        # placeholding class attributes for onset_analysis()
+        self.radio_files = None
+
+        # placeholding class attributes
         self.flux_series = None
         self.onset_stats = None
         self.onset_found = None
@@ -74,6 +82,12 @@ class Event:
                        }
 
         self.load_all_viewing()
+
+        # Download radio cdf files ONLY if asked to
+        if download_radio:
+            from read_swaves import get_swaves
+            self.radio_files = get_swaves(start_date, end_date)
+
 
     def update_onset_attributes(self, flux_series, onset_stats, onset_found, peak_flux, peak_time, fig, bg_mean):
         """
@@ -1336,8 +1350,11 @@ class Event:
             df = particle_data[:]
             t_start, t_end = df.index[0], df.index[-1]
         else:
+            # td is added to the end to avert white pixels at the end of the plot
+            td_str = resample if resample is not None else '0s'
+            td = pd.Timedelta(value=td_str)
             t_start, t_end = pd.to_datetime(xlim[0]), pd.to_datetime(xlim[1])
-            df = particle_data.loc[(particle_data.index >= t_start) & (particle_data.index < t_end)]
+            df = particle_data.loc[(particle_data.index >= t_start) & (particle_data.index <= (t_end+td))]
 
 
         # In practice this seeks the date on which the highest flux is observed
@@ -1375,57 +1392,89 @@ class Event:
         grid = grid[:-1,:]
         grid = grid.T
 
+        maskedgrid = np.where(grid==0, 0, 1)
+        maskedgrid = np.ma.masked_where(maskedgrid==1, maskedgrid)
+    
         # ---only plotting_commands from this point----->
 
         # Some visual parameters
-        plt.rcParams['axes.linewidth'] = 1.8
-        plt.rcParams['font.size'] = 16
+        plt.rcParams['axes.linewidth'] = 2.8
+        plt.rcParams['font.size'] = 28 if self.radio_files is None else 20
+        plt.rcParams['axes.titlesize'] = 32
         plt.rcParams['pcolor.shading'] = 'auto'
 
         normscale = cl.LogNorm()
 
         # Init the figure and axes
-        figsize=[27,14]
-        fig, ax = plt.subplots(figsize=figsize)
+        if self.radio_files is None:
+            figsize=(27,14)
+            fig, ax = plt.subplots(figsize=figsize)
+            ax = np.array([ax])
+            DYN_SPEC_INDX = 0
 
-        maskedgrid = np.where(grid==0, 0, 1)
-        maskedgrid = np.ma.masked_where(maskedgrid==1, maskedgrid)
+        else:
+            figsize = (27,18)
+            fig, ax = plt.subplots(nrows=2, figsize=figsize, sharex=True)
+            DYN_SPEC_INDX = 1
+
+            if spacecraft == "sta":
+                radio_sc = "ahead"
+            if spacecraft == "stb":
+                radio_sc = "behind"
+
+            from read_swaves import plot_swaves
+            ax[0], colormesh = plot_swaves(downloaded_files=self.radio_files, spacecraft=radio_sc, start_time=t_start, end_time=t_end, ax=ax[0])
+
+            # Colorbar
+            cb = fig.colorbar(colormesh, orientation='vertical', ax=ax[0])
+            clabel = "Intensity"
+            cb.set_label(clabel)
+
 
         # Colormesh
-        cplot = ax.pcolormesh(time, y_arr, grid, shading='auto', cmap=cmap, norm=normscale)
-        greymesh = ax.pcolormesh(time, y_arr, maskedgrid, shading='auto', cmap='Greys', vmin=-1, vmax=1)
+        cplot = ax[DYN_SPEC_INDX].pcolormesh(time, y_arr, grid, shading='auto', cmap=cmap, norm=normscale)
+        greymesh = ax[DYN_SPEC_INDX].pcolormesh(time, y_arr, maskedgrid, shading='auto', cmap='Greys', vmin=-1, vmax=1)
 
         # Colorbar
-        cb = fig.colorbar(cplot, orientation='vertical')
+        cb = fig.colorbar(cplot, orientation='vertical', ax=ax[DYN_SPEC_INDX])
         clabel = r"Intensity $\cdot$ $E^{2}$" + "\n" + r"[MeV/(cm$^{2}$ sr s)]"
         cb.set_label(clabel)
 
-        # x-axis settings
-        ax.set_xlabel("Time [HH:MM \nm-d]")
-        ax.xaxis_date()
-        ax.set_xlim(t_start, t_end)
-        #ax.xaxis.set_major_locator(mdates.HourLocator(interval = 1))
-        utc_dt_format1 = DateFormatter('%H:%M \n%m-%d')
-        ax.xaxis.set_major_formatter(utc_dt_format1)
-        #ax.xaxis.set_minor_locator(mdates.MinuteLocator(interval = 5))
-
         # y-axis settings
-        ax.set_yscale('log')
-        ax.set_ylim(np.nanmin(y_arr), np.nanmax(y_arr))
-        ax.set_yticks([yval for yval in y_arr])
-        ax.yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
+        ax[DYN_SPEC_INDX].set_yscale('log')
+        ax[DYN_SPEC_INDX].set_ylim(np.nanmin(y_arr), np.nanmax(y_arr))
+        ax[DYN_SPEC_INDX].set_yticks([yval for yval in y_arr])
+        ax[DYN_SPEC_INDX].yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
 
         # gets rid of minor ticks and labels
-        ax.yaxis.set_tick_params(length=0, width=0, which='minor', labelsize=0.)
-        ax.yaxis.set_tick_params(length=9., width=1.5, which='major')
+        ax[DYN_SPEC_INDX].yaxis.set_tick_params(length=0, width=0, which='minor', labelsize=0.)
+        ax[DYN_SPEC_INDX].yaxis.set_tick_params(length=9., width=1.5, which='major')
 
-        ax.set_ylabel(f"Energy [{y_unit}]")
+        ax[DYN_SPEC_INDX].set_ylabel(f"Energy [{y_unit}]")
+
+        # x-axis settings
+        ax[DYN_SPEC_INDX].set_xlabel("Time [HH:MM \nm-d]")
+        ax[DYN_SPEC_INDX].xaxis_date()
+        ax[DYN_SPEC_INDX].set_xlim(t_start, t_end)
+        #ax[DYN_SPEC_INDX].xaxis.set_major_locator(mdates.HourLocator(interval = 1))
+        utc_dt_format1 = DateFormatter('%H:%M \n%m-%d')
+        ax[DYN_SPEC_INDX].xaxis.set_major_formatter(utc_dt_format1)
+        #ax.xaxis.set_minor_locator(mdates.MinuteLocator(interval = 5))
+
+
+        fig.tight_layout(pad=-1.9)
+        plt.subplots_adjust(wspace=None, hspace=None)
 
         # Title
         if view is not None:
-            plt.title(f"{spacecraft.upper()} {instrument.upper()} ({view}) {s_identifier}, {date_of_event}")
+            title = f"{spacecraft.upper()} {instrument.upper()} ({view}) {s_identifier}, {date_of_event}"
         else:
-            plt.title(f"{spacecraft.upper()} {instrument.upper()} {s_identifier}, {date_of_event}")
+            title = f"{spacecraft.upper()} {instrument.upper()} {s_identifier}, {date_of_event}"
+
+        if self.radio_files is None:
+            ax[0].set_title(title)
+        else:
+            ax[0].set_title(f"Radio + Dynamic Spectrum, {title}")
 
         # saving of the figure
         if save:
@@ -1434,6 +1483,7 @@ class Event:
 
         self.fig = fig
         plt.show()
+            
 
 
     def tsa_plot(self, view, selection=None, xlim=None, resample=None):
@@ -1529,7 +1579,7 @@ class Event:
         shift_coefficients = [METERS_PER_AU/v for v in particle_speeds]
 
         stepsize = 0.05
-        min_slider_val, max_slider_val = 0.0, 1.55
+        min_slider_val, max_slider_val = 0.0, 2.55
 
         # Only the selected channels will be plotted
         if selection is not None:
