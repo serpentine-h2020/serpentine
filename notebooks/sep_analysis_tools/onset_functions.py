@@ -1676,10 +1676,15 @@ class Event:
                                      style = style
                                      )
 
-        button = widgets.Checkbox(value = False,
-                                  description = "Normalize",
-                                  indent = True
-                                  )
+        # button = widgets.Checkbox(value = False,
+        #                           description = "Normalize",
+        #                           indent = True
+        #                           )
+        button = widgets.RadioButtons(value='original data', 
+                                      description='Intensity:',
+                                      options=['original data', 'normalized'],
+                                      disabled=False
+                                      )
 
         # A box for the path length
         path_label = f"R={radial_distance_value:.2f} AU\nL = {slider.value} AU"
