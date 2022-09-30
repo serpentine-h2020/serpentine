@@ -1423,7 +1423,7 @@ class Event:
                 radio_sc = "behind"
 
             from read_swaves import plot_swaves
-            ax[0], colormesh = plot_swaves(downloaded_files=self.radio_files, spacecraft=radio_sc, start_time=t_start, end_time=t_end, ax=ax[0])
+            ax[0], colormesh = plot_swaves(downloaded_files=self.radio_files, spacecraft=radio_sc, start_time=t_start, end_time=t_end, ax=ax[0], cmap=cmap)
 
             # Colorbar
             cb = fig.colorbar(colormesh, orientation='vertical', ax=ax[0])
