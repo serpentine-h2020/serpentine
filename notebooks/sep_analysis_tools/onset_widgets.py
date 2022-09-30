@@ -2,7 +2,7 @@
 A library to run the interactive user interface in SEP event onset determination notebooks.
 
 @ Author: Christian Palmroos <chospa@utu.fi>
-@Last updated: 2022-09-26
+@Last updated: 2022-09-30
 """
 
 
@@ -49,9 +49,10 @@ species_dict = {
 }
 
 radio_dict = {
-    "STEREO-A" : "ahead",
-    "STEREO-B" : "behind",
-    "WIND (Coming soon!)" : "wind"
+    "None" : None,
+    "STEREO-A" : ("ahead", "STEREO-A"),
+    "STEREO-B" : ("behind", "STEREO-B"),
+    "WIND (Coming soon!)" : ("wind", "WIND")
 }
 
 # Drop-downs for dynamic particle spectrum:
@@ -80,19 +81,22 @@ species_drop = widgets.Dropdown(
                                 )
 
 
-# A button to enable radio spectrum
+# A button to enable radio spectrum (Leave this out for now, sincde it doesn't work in the server as of 2022-09-30)
 radio_button = widgets.Checkbox(
                                 value=False,
                                 description='Radio Spectrum',
-                                disabled=False,
+                                disabled=True,
                                 indent=False
                                 )
 
 # The drop-drown for radio options
+radio_drop_style = {'description_width': 'initial'}
 radio_drop = widgets.Dropdown(
-                                options = radio_dict.keys(),
-                                description = "Spacecraft:",
-                                disabled = True,
+                                options = radio_dict,
+                                value = None,
+                                description = "Plot radio spectrum for:",
+                                disabled = False,
+                                style=radio_drop_style
                               )
 
 # this function updates the options in sensor_drop menu
@@ -179,5 +183,4 @@ spacecraft_drop.observe(update_species_options)
 sensor_drop.observe(update_species_options)
 
 # also observe the radio menu
-radio_button.observe(update_radio_options)
-# radio_drop.observe(update_radio_options) 
+# radio_button.observe(update_radio_options)

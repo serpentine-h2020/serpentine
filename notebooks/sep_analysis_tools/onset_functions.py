@@ -24,7 +24,7 @@ from seppy.loader.wind import wind3dp_load
 from IPython.core.display import display
 
 # This is to get rid of this specific warning:
-# /home/chospa/Documents/Github/serpentine/notebooks/sep_analysis_tools/read_swaves.py:96: UserWarning: The input coordinates to pcolormesh are interpreted as 
+# /home/user/xyz/serpentine/notebooks/sep_analysis_tools/read_swaves.py:96: UserWarning: The input coordinates to pcolormesh are interpreted as 
 # cell centers, but are not monotonically increasing or decreasing. This may lead to incorrectly calculated cell edges, in which 
 # case, please supply explicit cell edges to pcolormesh. 
 # colormesh = ax.pcolormesh( time_arr, freq[::-1], data_arr[::-1], vmin = 0, vmax = 0.5*np.max(data_arr), cmap = 'inferno' )
@@ -33,7 +33,8 @@ warnings.filterwarnings("ignore", category=UserWarning)
 class Event:
 
     def __init__(self, start_date, end_date, spacecraft, sensor,
-                 species, data_level, data_path, download_radio=False, threshold=None):
+                 species, data_level, data_path, radio_spacecraft=None, 
+                 threshold=None):
 
         if spacecraft == "Solar Orbiter":
             spacecraft = "solo"
@@ -58,6 +59,7 @@ class Event:
         self.data_level = data_level.lower()
         self.data_path = data_path + os.sep
         self.threshold = threshold
+        self.radio_spacecraft = radio_spacecraft # this is a 2-tuple, e.g., ("ahead", "STEREO-A")
         self.viewing = None
 
         self.radio_files = None
@@ -84,7 +86,7 @@ class Event:
         self.load_all_viewing()
 
         # Download radio cdf files ONLY if asked to
-        if download_radio:
+        if self.radio_spacecraft is not None:
             from read_swaves import get_swaves
             self.radio_files = get_swaves(start_date, end_date)
 
@@ -1332,7 +1334,7 @@ class Event:
                 s_identifier = "electrons"
                 warnings.warn('SOHO/EPHIN data is not fully implemented yet!')
 
-        # These instruments will have keVs on their y-axis
+        # These particle instruments will have keVs on their y-axis
         LOW_ENERGY_SENSORS = ("sept", "ept")
 
         if instrument in LOW_ENERGY_SENSORS:
@@ -1399,14 +1401,17 @@ class Event:
 
         # Some visual parameters
         plt.rcParams['axes.linewidth'] = 2.8
-        plt.rcParams['font.size'] = 28 if self.radio_files is None else 20
+        plt.rcParams['font.size'] = 28 if self.radio_spacecraft is None else 20
         plt.rcParams['axes.titlesize'] = 32
+        plt.rcParams['axes.labelsize'] = 28 if self.radio_spacecraft is None else 26
+        plt.rcParams['xtick.labelsize'] = 28 if self.radio_spacecraft is None else 26
+        plt.rcParams['ytick.labelsize'] = 20 if self.radio_spacecraft is None else 18
         plt.rcParams['pcolor.shading'] = 'auto'
 
         normscale = cl.LogNorm()
 
         # Init the figure and axes
-        if self.radio_files is None:
+        if self.radio_spacecraft is None:
             figsize=(27,14)
             fig, ax = plt.subplots(figsize=figsize)
             ax = np.array([ax])
@@ -1417,19 +1422,16 @@ class Event:
             fig, ax = plt.subplots(nrows=2, figsize=figsize, sharex=True)
             DYN_SPEC_INDX = 1
 
-            if spacecraft == "sta":
-                radio_sc = "ahead"
-            if spacecraft == "stb":
-                radio_sc = "behind"
-
             from read_swaves import plot_swaves
-            ax[0], colormesh = plot_swaves(downloaded_files=self.radio_files, spacecraft=radio_sc, start_time=t_start, end_time=t_end, ax=ax[0], cmap=cmap)
+            ax[0], colormesh = plot_swaves(downloaded_files=self.radio_files, spacecraft=self.radio_spacecraft[0], start_time=t_start, end_time=t_end, ax=ax[0], cmap=cmap)
+
+            fig.tight_layout(pad=9.5, w_pad=-0.5, h_pad=-0.5)
+            # plt.subplots_adjust(wspace=-1, hspace=-1.8)
 
             # Colorbar
             cb = fig.colorbar(colormesh, orientation='vertical', ax=ax[0])
             clabel = "Intensity"
             cb.set_label(clabel)
-
 
         # Colormesh
         cplot = ax[DYN_SPEC_INDX].pcolormesh(time, y_arr, grid, shading='auto', cmap=cmap, norm=normscale)
@@ -1461,17 +1463,13 @@ class Event:
         ax[DYN_SPEC_INDX].xaxis.set_major_formatter(utc_dt_format1)
         #ax.xaxis.set_minor_locator(mdates.MinuteLocator(interval = 5))
 
-
-        fig.tight_layout(pad=-1.9)
-        plt.subplots_adjust(wspace=None, hspace=None)
-
         # Title
         if view is not None:
             title = f"{spacecraft.upper()} {instrument.upper()} ({view}) {s_identifier}, {date_of_event}"
         else:
             title = f"{spacecraft.upper()} {instrument.upper()} {s_identifier}, {date_of_event}"
 
-        if self.radio_files is None:
+        if self.radio_spacecraft is None:
             ax[0].set_title(title)
         else:
             ax[0].set_title(f"Radio + Dynamic Spectrum, {title}")
