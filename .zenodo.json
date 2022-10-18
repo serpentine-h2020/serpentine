@@ -1,11 +1,11 @@
 {
-    "description": "This repository contains the Python tools and software developed by the [solar energetic particle analysis platform for the inner heliosphere (SERPENTINE)](https://serpentine-h2020.eu/) project for the downloading of data and the performing of analysis and visualisation.",
+    "description": "This repository contains the Python tools and software developed by the solar energetic particle analysis platform for the inner heliosphere (SERPENTINE) project for the downloading of data and the performing of analysis and visualisation.",
     "license": "BSD-3-Clause",
     "title": "SERPENTINE",
     "upload_type": "software",
     "creators": [
         {
-            "name": "Jan Gieseler,  Jan",
+            "name": "Gieseler, Jan",
             "orcid": "0000-0003-1848-7067",
             "affiliation": "University of Turku"
         },
