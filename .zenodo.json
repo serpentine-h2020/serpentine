@@ -1,5 +1,5 @@
 {
-    "description": "<p>This repository contains the Python tools and software developed by the <a href=\"https://serpentine-h2020.eu\">solar energetic particle analysis platform for the inner heliosphere (SERPENTINE)</a> project for the downloading of data and the performing of analysis and visualisation.</p>", 
+    "description": "<p>This repository contains the Python tools and software developed by the <a href=\"https://serpentine-h2020.eu/\">solar energetic particle analysis platform for the inner heliosphere (SERPENTINE)</a> project for the downloading of data and the performing of analysis and visualisation.</p>\n\n<p><strong>Contents</strong></p>\n\n<p>Jupyter Notebooks:</p>\n\n<ul>\n\t<li><a href=\"https://github.com/serpentine-h2020/serpentine/tree/main/notebooks/solarmach\">Multi-Spacecraft Constellation Plotter Solar-MACH</a></li>\n\t<li><a href=\"https://github.com/serpentine-h2020/serpentine/tree/main/notebooks/sep_analysis_tools\">Solar Energetic Particle Analysis Tools</a></li>\n</ul>\n\n<p>&nbsp;</p>",
     "license": "BSD-3-Clause", 
     "title": "SERPENTINE", 
     "grants": [
