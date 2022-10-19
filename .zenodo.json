@@ -49,17 +49,5 @@
             "name": "Vainio, Rami"
         }
     ], 
-    "access_right": "open", 
-    "related_identifiers": [
-        {
-            "scheme": "url", 
-            "identifier": "https://github.com/serpentine-h2020/serpentine/tree/v1.1.1a", 
-            "relation": "isSupplementTo"
-        }, 
-        {
-            "scheme": "doi", 
-            "identifier": "10.5281/zenodo.7104865", 
-            "relation": "isVersionOf"
-        }
-    ]
+    "access_right": "open"
 }
