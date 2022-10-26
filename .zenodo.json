@@ -1,55 +1,53 @@
 {
-    "description": "This repository contains the Python tools and software developed by the [solar energetic particle analysis platform for the inner heliosphere (SERPENTINE)](https://serpentine-h2020.eu/) project for the downloading of data and the performing of analysis and visualisation.
-
-    ## Contents
-    
-    Jupyter Notebooks:
-    - [Multi-Spacecraft Constellation Plotter Solar-MACH](https://github.com/serpentine-h2020/serpentine/tree/main/notebooks/solarmach)
-    - [Solar Energetic Particle Analysis Tools](https://github.com/serpentine-h2020/serpentine/tree/main/notebooks/sep_analysis_tools)",
-    "license": "BSD-3-Clause",
-    "title": "SERPENTINE",
-    "upload_type": "software",
+    "description": "<p>This repository contains the Python tools and software developed by the <a href=\"https://serpentine-h2020.eu/\">solar energetic particle analysis platform for the inner heliosphere (SERPENTINE)</a> project for the downloading of data and the performing of analysis and visualisation.</p>\n\n<p><strong>Contents</strong></p>\n\n<p>Jupyter Notebooks:</p>\n\n<ul>\n\t<li><a href=\"https://github.com/serpentine-h2020/serpentine/tree/main/notebooks/solarmach\">Multi-Spacecraft Constellation Plotter Solar-MACH</a></li>\n\t<li><a href=\"https://github.com/serpentine-h2020/serpentine/tree/main/notebooks/sep_analysis_tools\">Solar Energetic Particle Analysis Tools</a></li>\n</ul>\n\n<p>&nbsp;</p>",
+    "license": "BSD-3-Clause", 
+    "title": "SERPENTINE", 
+    "grants": [
+        {
+            "id": "10.13039/501100000780::101004159"
+        }
+    ], 
+    "upload_type": "software", 
     "creators": [
         {
-            "name": "Jan Gieseler,  Jan",
-            "orcid": "0000-0003-1848-7067",
-            "affiliation": "University of Turku"
-        },
+            "orcid": "0000-0003-1848-7067", 
+            "affiliation": "University of Turku", 
+            "name": "Gieseler,  Jan"
+        }, 
         {
-            "name": "Palmroos, Christian",
-            "orcid": "0000-0002-7778-5454",
-            "affiliation": "University of Turku"
-        },
+            "orcid": "0000-0002-7778-5454", 
+            "affiliation": "University of Turku", 
+            "name": "Palmroos, Christian"
+        }, 
         {
-            "name": "Dresing, Nina",
-            "orcid": "0000-0003-3903-4649",
-            "affiliation": "University of Turku"
-        },
+            "orcid": "0000-0003-3903-4649", 
+            "affiliation": "University of Turku", 
+            "name": "Dresing, Nina"
+        }, 
         {
-            "name": "Morosan, Diana",
-            "orcid": "0000-0002-8416-1375",
-            "affiliation": "University of Helsinki"
-        },
+            "orcid": "0000-0002-8416-1375", 
+            "affiliation": "University of Helsinki", 
+            "name": "Morosan, Diana"
+        }, 
         {
-            "name": "Asvestari, Eleanna",
-            "orcid": "0000-0002-6998-7224",
-            "affiliation": "University of Helsinki"
-        },
+            "orcid": "0000-0002-6998-7224", 
+            "affiliation": "University of Helsinki", 
+            "name": "Asvestari, Eleanna"
+        }, 
         {
-            "name": "Yli-Laurila, Aleksi",
-            "affiliation": "University of Turku"
-        },
+            "affiliation": "University of Turku", 
+            "name": "Yli-Laurila, Aleksi"
+        }, 
         {
-            "name": "Price, Daniel J.",
-            "orcid": "0000-0002-8065-2847",
-            "affiliation": "University of Helsinki"
-        },
+            "orcid": "0000-0002-8065-2847", 
+            "affiliation": "University of Helsinki", 
+            "name": "Price, Daniel J."
+        }, 
         {
-            "name": "Vainio, Rami",
-            "orcid": "0000-0002-3298-2067",
-            "affiliation": "University of Turku"
+            "orcid": "0000-0002-3298-2067", 
+            "affiliation": "University of Turku", 
+            "name": "Vainio, Rami"
         }
-    ],
-    "access_right": "open",
-    "grants": [{"id":"101004159"}]
+    ], 
+    "access_right": "open"
 }
