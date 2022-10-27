@@ -376,7 +376,7 @@ def _isstreamlit():
     """
     # https://discuss.streamlit.io/t/how-to-check-if-code-is-run-inside-streamlit-and-not-e-g-ipython/23439
     try:
-        from streamlit.scriptrunner import get_script_run_ctx
+        from streamlit.runtime.scriptrunner import get_script_run_ctx
         if not get_script_run_ctx():
             use_streamlit = False
         else:
