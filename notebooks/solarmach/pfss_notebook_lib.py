@@ -5,7 +5,7 @@ for seeking the footpoints of IMF field lines connecting back to the photosphere
 @Author: Christian Palmroos
          <chospa@utu.fi>
 
-Last updated: 2022-09-28
+Last updated: 2022-10-26
 '''
 
 # imports:
@@ -1304,7 +1304,7 @@ def symlog_pspiral(sw, distance, longitude, latitude, hmimap, names=None, title=
     
     # Colorbar is the last object created -> it is the final index in the list of axes
     cb_ax = fig.axes[-1]
-    cb_ax.set_ylabel('latitude [deg]')
+    cb_ax.set_ylabel('Heliographic latitude [deg]')
     
     # Before adding txtboxes, make sure that sc_footpoint is of proper shape
     if(isinstance(sc_footpoint[0],float)):
