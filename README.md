@@ -12,15 +12,9 @@ Jupyter Notebooks:
 
 ## Other SERPENTINE Software
 
-General:
 - [Solar Magnetic Connection Haus tool (Solar-MACH)](https://github.com/jgieseler/solarmach)
+- [SEPpy - A compendium of Python data loaders and analysis tools for in-situ measurements of Solar Energetic Particles (SEP) ](https://github.com/serpentine-h2020/seppy)
 
-Solar Energetic Particle (SEP) Data Loaders
-- [Solar Orbiter/EPD](https://github.com/jgieseler/solo-epd-loader)  
-- [Parker Solar Probe/ISOIS](https://github.com/jgieseler/psp-isois-loader)  
-- [SOHO](https://github.com/jgieseler/soho-loader)  
-- [STEREO](https://github.com/jgieseler/stereo-loader)  
-- [Wind/3DP](https://github.com/jgieseler/wind-3dp-loader)
 
 ## Acknowledgements
 This project has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No 101004159.
