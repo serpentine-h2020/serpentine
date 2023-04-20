@@ -8,5 +8,5 @@ matplotlib-inline==0.1.3
 numpy>=1.20.3
 pandas>=1.3.4
 seppy>=0.1.7
-solo_epd_loader>=0.1.10
+solo_epd_loader>=0.2.1
 sunpy>=4.1.0
