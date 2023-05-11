@@ -3,6 +3,6 @@ drms>=0.6.2
 imageio==2.27.0
 matplotlib==3.5.3
 jupyter
-pfsspy
-solarmach>=0.1.6
+plotly
+solarmach>=0.2.0
 zeep>=4.1.0
