@@ -4,5 +4,5 @@ imageio==2.27.0
 matplotlib==3.5.3
 jupyter
 plotly
-solarmach>=0.2.0
+solarmach>=0.2.2
 zeep>=4.1.0
