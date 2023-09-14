@@ -1,15 +1,15 @@
 repos:
-  - repo: https://github.com/kynan/nbstripout
-    rev: 0.6.0
-    hooks:
-      - id: nbstripout
-        args: [
-          "--keep-output",
-          "--extra-keys",
-          "metadata.language_info.version",
-          "metadata.kernelspec",
-          "metadata.vscode",
-        ]
+  # - repo: https://github.com/kynan/nbstripout
+  #   rev: 0.6.0
+  #   hooks:
+  #     - id: nbstripout
+  #       args: [
+  #         "--keep-output",
+  #         "--extra-keys",
+  #         "metadata.language_info.version",
+  #         "metadata.kernelspec",
+  #         "metadata.vscode",
+  #       ]
   - repo: https://github.com/mwouts/jupytext
     rev: v1.15.1
     hooks:
