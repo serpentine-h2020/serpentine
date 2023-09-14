@@ -14,14 +14,17 @@ repos:
     rev: v1.14.1
     hooks:
     - id: jupytext
-      args: [notebooks/sep_analysis_tools/data_loader.ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+      files: "notebooks/sep_analysis_tools/data_loader.ipynb"
+      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
     - id: jupytext
-      args: [notebooks/sep_analysis_tools/dynamic_spectrum.ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+      files: "notebooks/sep_analysis_tools/dynamic_spectrum.ipynb"
+      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
     - id: jupytext
-      args: [notebooks/sep_analysis_tools/onset_determination.ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+      files: "notebooks/sep_analysis_tools/onset_determination.ipynb"
+      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
     - id: jupytext
-      args: [notebooks/sep_analysis_tools/time_shift_analysis.ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+      files: "notebooks/sep_analysis_tools/time_shift_analysis.ipynb"
+      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
     - id: jupytext
-      args: [notebooks/solarmach/solarmach.ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "Solar-MACH", "language": "python", "name": "solarmach"}}']
-    # - id: jupytext
-      # args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+      files: "notebooks/solarmach/solarmach.ipynb"
+      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "Solar-MACH", "language": "python", "name": "solarmach"}}']
