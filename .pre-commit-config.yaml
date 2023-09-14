@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.6.0
+    hooks:
+      - id: nbstripout
+        args: [
+          "--keep-output",
+          "--extra-keys",
+          "metadata.language_info.version",
+          "metadata.kernelspec",
+          "metadata.vscode",
+        ]
+  - repo: https://github.com/mwouts/jupytext
+    rev: v1.14.1
+    hooks:
+    - id: jupytext
+      args: [data_loader.ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+    - id: jupytext
+      args: [dynamic_spectrum.ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+    - id: jupytext
+      args: [onset_determination.ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+    - id: jupytext
+      args: [time_shift_analysis.ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+    - id: jupytext
+      args: [solarmach.ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "Solar-MACH", "language": "python", "name": "solarmach"}}']
+    # - id: jupytext
+      # args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
