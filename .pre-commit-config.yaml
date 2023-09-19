@@ -15,16 +15,16 @@ repos:
     hooks:
     - id: jupytext
       files: "notebooks/sep_analysis_tools/data_loader.ipynb"
-      args: [--sync, --from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
     - id: jupytext
       files: "notebooks/sep_analysis_tools/dynamic_spectrum.ipynb"
-      args: [--sync, --from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
     - id: jupytext
       files: "notebooks/sep_analysis_tools/onset_determination.ipynb"
-      args: [--sync, --from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
     - id: jupytext
       files: "notebooks/sep_analysis_tools/time_shift_analysis.ipynb"
-      args: [--sync, --from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
+      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Analysis", "language": "python", "name": "sep_analysis"}}']
     - id: jupytext
       files: "notebooks/solarmach/solarmach.ipynb"
-      args: [--sync, --from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "Solar-MACH", "language": "python", "name": "solarmach"}}']
+      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "Solar-MACH", "language": "python", "name": "solarmach"}}']
