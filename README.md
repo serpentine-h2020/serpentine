@@ -28,5 +28,5 @@ Solar-MACH: An open-source tool to analyze solar magnetic connection configurati
 > Palmroos, C., Gieseler, J., Dresing N., Morosan D. E., Asvestari E., Yli-Laurila A., Price D. J., Valkila S., Vainio R. (2022). Solar energetic particle time series analysis with Python. *Front. Astronomy Space Sci.* 9. [doi:10.3389/fspas.2022.1073578](https://doi.org/10.3389/fspas.2022.1073578)
 
 ## Acknowledgements
-<img align="right" height="50px" src="eu_logo.png"> 
+<img align="left" height="45px" src="eu_logo.png"> 
 This project has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No 101004159.
