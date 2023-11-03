@@ -1,9 +1,2 @@
-cmasher>=1.6.3
-drms>=0.6.2
-imageio>=2.31.6
-matplotlib==3.5.3
 jupyter
-plotly
-solarmach>=0.2.6
-speasy>=1.2.0
-zeep>=4.1.0
+solarmach>=0.2.7
