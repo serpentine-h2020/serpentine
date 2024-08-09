@@ -1,20 +1,17 @@
 # Installation 
-1. Make sure you have a recent version of [Anaconda](https://www.anaconda.com/products/distribution) installed. 
-2. Open your terminal/command line/Anaconda prompt and run the following:
+1. Make sure you have a recent version of `conda` installed (we recommend [miniforge](https://github.com/conda-forge/miniforge)). To test this, open your terminal/command line/conda prompt and try to run the command `conda`.
+2. [Download this file](https://github.com/serpentine-h2020/serpentine/archive/refs/heads/main.zip) and extract to a folder of your choice (or clone the repository https://github.com/serpentine-h2020/serpentine if you know how to use `git`).
+3. Open your terminal/command line/conda prompt, navigate to the downloaded (extracted) folder `notebooks/sep_analysis_tools` that contains the file `requirements.txt`, and run the following:
+
     ``` bash
-    $ conda create --name serpentine python=3.9
-    $ conda activate serpentine
-    ```
-3. [Download this file](https://github.com/serpentine-h2020/serpentine/archive/refs/heads/main.zip) and extract to a folder of your choice (or clone the repository https://github.com/serpentine-h2020/serpentine if you know how to use `git`).
-4. Open your terminal/command line/Anaconda prompt, navigate to the downloaded (extracted) folder `notebooks/sep_analysis_tools` that contains the file `requirements.txt`, and run the following (first command is just to verify that you are in the correct conda environment):
-    ``` bash
+    $ conda create --name serpentine python=3.11
     $ conda activate serpentine
     $ pip install -r requirements.txt
     ```
 
 
 # Run 
-1. Open your terminal/command line/Anaconda prompt.
+1. Open your terminal/command line/conda prompt.
 2. In the terminal, navigate to the downloaded (extracted) folder `notebooks/sep_analysis_tools` that contains some `.ipynb` files.
 3. Make sure the corresponding conda environment is activated by running `conda activate serpentine` in the terminal.
 4. Run `jupyter notebook`
