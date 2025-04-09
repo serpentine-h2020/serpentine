@@ -1,0 +1,26 @@
+repos:
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.8.1
+    hooks:
+      - id: nbstripout
+        args: [
+          "--keep-output",
+          "--extra-keys",
+          "metadata.language_info.version",
+          "metadata.kernelspec",
+          "metadata.vscode",
+        ]
+  - repo: https://github.com/mwouts/jupytext
+    rev: v1.17.0
+    hooks:
+    - id: jupytext
+      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Tools", "language": "python", "name": "python3"}}']
+
+# see https://pre-commit.ci/#configuration for details
+ci:
+    autofix_commit_msg: |
+        [skip actions][pre-commit.ci] auto fixes from pre-commit.com hooks
+
+        for more information, see https://pre-commit.ci
+    autofix_prs: false
+    autoupdate_schedule: 'quarterly'
