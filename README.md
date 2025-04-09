@@ -27,7 +27,7 @@ Jupyter Notebooks:
 1. Open your terminal/command line/conda prompt.
 2. In the terminal, navigate to the downloaded/extracted folder.
 3. Make sure the corresponding conda environment is activated by running `conda activate serpentine` in the terminal.
-4. Run `jupyter-lab'`, your standard web-browser should now open the JupyterLab interface.
+4. Run `jupyter-lab`, your standard web-browser should now open the JupyterLab interface.
 5. In the *File Browser* (click *View* -> *File Browser* if it's not shown) double-click on the `notebooks` folder, then `sep_analysis_tools` or `solarmach`, and finally the corresponding `.ipynb` file for a specific tool.
 
 ## Other SERPENTINE Software
