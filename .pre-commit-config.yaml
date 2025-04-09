@@ -14,7 +14,7 @@ repos:
     rev: v1.17.0
     hooks:
     - id: jupytext
-      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Tools", "language": "python", "name": "python3"}}']
+      args: [--from, ipynb, --to, ipynb, --update-metadata, '{"kernelspec": {"display_name": "SEP Tools", "language": "python", "name": "sep_tools"}}']
 
 # see https://pre-commit.ci/#configuration for details
 ci:
